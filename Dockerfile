@@ -7,6 +7,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     pkg-config \
     libssl-dev \
+    cmake \        
+    clang \                    
+    protobuf-compiler \         
     && rm -rf /var/lib/apt/lists/*
 
 # Install the latest stable Rust toolchain
@@ -29,5 +32,6 @@ RUN cargo --version && kani --version
 # Set working directory to mounted volume location
 WORKDIR /work
 
-# Set default command to provide a shell with tools
+# Default to a shell so you can iterate
 CMD ["/bin/bash"]
+
